@@ -13,7 +13,9 @@
 
 <nav>
     <ul>
-        <li class="add-button"><a href="/add.html">+</a></li>
+        <#if isAdmin>
+            <li class="add-button"><a href="/add.html">+</a></li>
+        </#if>
         <#list contacts as contact>
             <li class="${(selected?? && selected.id == contact.id)?then('selected','')}">
                 <a class="contact-link" href="?select=${contact.id}">${contact.lastName}, ${contact.firstName}</a>
