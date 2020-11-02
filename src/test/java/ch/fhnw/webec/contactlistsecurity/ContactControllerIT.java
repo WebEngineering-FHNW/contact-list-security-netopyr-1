@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -44,7 +45,12 @@ public class ContactControllerIT {
         entityManager.flush();
 
         // when
-        final ResultActions result = mockMvc.perform(MockMvcRequestBuilders.get("/?select=" + contact.getId()));
+        final ResultActions result = mockMvc.perform(
+                MockMvcRequestBuilders.get("/?select=" + contact.getId())
+                .with(
+                        SecurityMockMvcRequestPostProcessors.user("user").roles("USER")
+                )
+        );
 
         // then
         result.andExpect(status().isOk())
