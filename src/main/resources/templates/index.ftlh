@@ -11,6 +11,8 @@
     <h1>Contact List</h1>
 </header>
 
+<a class="logout" href="/logout">Logout</a>
+
 <nav>
     <ul>
         <#if isAdmin>

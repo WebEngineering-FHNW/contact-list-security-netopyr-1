@@ -20,6 +20,12 @@ h1 {
     text-rendering: optimizeLegibility;
 }
 
+.logout {
+    float: right;
+    margin-right: 50px;
+    text-decoration: none;
+}
+
 nav {
 
     position: absolute;
@@ -103,9 +109,14 @@ main td ul {
     padding: 0;
 }
 
-main p {
+main #no-contact-message {
     padding: 20px 0;
     text-align: center;
     font-style: italic;
     font-weight: 100;
+}
+
+main .error {
+    font-weight: bold;
+    color: #8c1212;
 }
