@@ -1,6 +1,8 @@
 package ch.fhnw.webec.contactlistsecurity;
 
 import ch.fhnw.webec.contactlistsecurity.pages.IndexPage;
+import ch.fhnw.webec.contactlistsecurity.pages.LoginPage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
@@ -16,6 +18,12 @@ class IndexIT {
     private int port;
 
     private final WebDriver driver = new HtmlUnitDriver();
+
+    @BeforeEach
+    void login() {
+        final LoginPage page = LoginPage.to(driver, port);
+        page.login("user", "user");
+    }
 
     @Test
     void initialPageShouldNotShowPersonDetails() {

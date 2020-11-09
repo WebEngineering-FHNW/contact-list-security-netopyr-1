@@ -11,9 +11,13 @@
     <h1>Contact List</h1>
 </header>
 
+<a class="logout" href="/logout">Logout</a>
+
 <nav>
     <ul>
-        <li class="add-button"><a href="/add.html">+</a></li>
+        <#if isAdmin>
+            <li class="add-button"><a href="/add.html">+</a></li>
+        </#if>
         <#list contacts as contact>
             <li class="${(selected?? && selected.id == contact.id)?then('selected','')}">
                 <a class="contact-link" href="?select=${contact.id}">${contact.lastName}, ${contact.firstName}</a>
